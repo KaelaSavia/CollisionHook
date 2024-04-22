@@ -40,7 +40,7 @@ IForward *g_pPassFwd = NULL;
 int gSetCollisionSolverHookId, gShouldCollideHookId;
 
 
-DETOUR_DECL_STATIC2( PassServerEntityFilterFunc, bool, const IHandleEntity *, pTouch, const IHandleEntity *, pPass )
+DETOUR_DECL_STATIC2( PassServerEntityFilterFunc, __attribute__((regparm(2))) bool, const IHandleEntity *, pTouch, const IHandleEntity *, pPass )
 {
 	if ( g_pPassFwd->GetFunctionCount() == 0 )
 		return DETOUR_STATIC_CALL( PassServerEntityFilterFunc )( pTouch, pPass );
